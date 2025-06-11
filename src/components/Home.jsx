@@ -1,4 +1,3 @@
-
 import "../styles/styles.css"
 
 const Home = () => {

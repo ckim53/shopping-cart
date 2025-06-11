@@ -1,31 +1,31 @@
-//have cards representing items
-//from items from api 
 import { useEffect, useState } from "react";
+
 import ItemCard from "./ItemCard";
 import '../styles/styles.css';
 import Loading from "./Loading";
+import { useOutletContext } from "react-router-dom";
 
-const Shop = () => {
-    const [items, setItems] = useState([]);
+function Shop () {
     const [loading, setLoading] = useState(true);
 
-    function handleQuantityChange(itemId) {
-        const updatedItem = items.find(item => item.id === itemId);
-        setItems(items.map(item => item.id === itemId ? updatedItem : item));
-    }
-    
+    const { setItems, items, handleAdd } = useOutletContext();
+
     useEffect(() => {
         async function getData() {
             try {
+                if (items.length === 0) {
                 const response = await fetch('https://fakestoreapi.com/products');
                 const data = await response.json();
                 setItems(
                     data.map(item => ({
                         title: item.title,
                         id: item.id,
-                        image: item.image
+                        image: item.image,
+                        quantity: 0,
+                        inCart: false
                     }))
                 );
+                }
                 setLoading(false);
             } catch (error) {
                 console.error(error);
@@ -50,7 +50,10 @@ const Shop = () => {
                         id={item.id} 
                         title={item.title}
                         image={item.image}
-                        handleChange={() => handleQuantityChange(item.id)}>
+                        inCart={item.inCart}
+                        handleAdd={handleAdd}
+                        currentQuantity={item.quantity}
+                        >
                     </ItemCard>)
                 }
                 </div>
