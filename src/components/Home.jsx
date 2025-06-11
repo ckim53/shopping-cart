@@ -1,20 +1,12 @@
-import { Link } from "react-router-dom";
+
+import "../styles/styles.css"
 
 const Home = () => {
     return (
-        <div>
-        <h1>Welcome to my shopping site!</h1>
-        <nav>
-          <ul>
-            <li>
-              <Link to="shop">Shop</Link>
-            </li>
-            <li>
-              <Link to="cart">View Cart</Link>
-            </li>
-          </ul>
-        </nav>
-      </div>
+        <div className="home">
+            <h1>Welcome to Our Shop!</h1>
+            <p>Browse our latest products and deals.</p>
+        </div>
     )
 }
 
