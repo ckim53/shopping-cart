@@ -29,7 +29,7 @@ const Layout = () => {
   return (
     <>
       <NavBar quantity={quantity} />
-      <Outlet context={{ setItems, items, quantity, handleAdd }} />
+      <Outlet context={{ setItems, items, setQuantity, quantity, handleAdd }} />
     </>
   );
 };

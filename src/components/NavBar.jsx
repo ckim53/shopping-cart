@@ -4,7 +4,7 @@ import { useState } from "react";
 const NavBar = () => {
     return (
         <div className="navbar">
-            <h1 id="logo"><Link to="/">Christina's Cart</Link></h1>
+            <Link to="/"><h1 id="logo">Christina's Cart</h1></Link>
             <nav>
                 <ul>
                     <li>
