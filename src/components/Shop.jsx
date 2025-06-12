@@ -38,7 +38,7 @@ function Shop () {
         return <Loading/>;
       }
 
-    return (<div>
+    return (<div className="shop">
             <div className="shop-title">
                 <h1>Shop</h1>
             </div>
