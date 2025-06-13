@@ -2,7 +2,7 @@ import NavBar from "./NavBar";
 import { Outlet } from "react-router-dom";
 import { useState } from "react";
 
-const Layout = () => {
+function Layout () {
   const [quantity, setQuantity] = useState(0);
   const [items, setItems] = useState([]);
 
@@ -23,8 +23,8 @@ const Layout = () => {
         }
         return item;
       });
-    setItems(updatedItems);
-}
+      setItems(updatedItems);
+    }
 
   return (
     <>
