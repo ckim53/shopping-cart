@@ -1,6 +1,6 @@
 import "../styles/styles.css"
 
-const Home = () => {
+function Home () {
     return (
         <div className="home">
             <h1>Welcome to Our Shop!</h1>

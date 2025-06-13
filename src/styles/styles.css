@@ -95,14 +95,14 @@ main {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.card img{
+.card img {
     width: 100px;
     height: 100px;
     object-fit: contain;
     margin-bottom: 8px;
 }
 
-.spinner {
+    .spinner {
     border: 6px solid #f3f3f3; 
     border-top: 6px solid #3498db; 
     border-radius: 50%;
@@ -110,12 +110,12 @@ main {
     height: 40px;
     animation: spin 1s linear infinite;
     margin: auto; 
-  }
+}
   
-  @keyframes spin {
+@keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
-  }
+}
   
 .in-cart .action-button {
     color: white;
@@ -134,8 +134,9 @@ main {
 }
 
 .cart img{
-    width: 100px;
-    height: fit-content;
+    width: auto;
+    height: 100px;
+    object-fit: contain;
 }
 
 .cart-item-info button {
@@ -159,7 +160,7 @@ main {
 .cart-item-info {
     display: flex;
     flex-direction: column;
-    width: fit-content;
+    width: 400px;
     align-items: left;
     margin-left: 50px;
 }

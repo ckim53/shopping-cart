@@ -1,15 +1,16 @@
 import '../styles/styles.css'
 import QuantityButtons from './QuantityButtons';
 import { useState } from 'react'
+import PropTypes from 'prop-types';
 
-function ItemCard({ id, title, image, inCart, handleAdd, currentQuantity}) {
+function ItemCard ({ id, title, image, inCart, handleAdd, currentQuantity}) {
     const [quantity, setQuantity] = useState((currentQuantity == 0) ? 1 : currentQuantity);
 
-    function handleIncrement() {
+    function handleIncrement(quantity) {
         setQuantity(quantity + 1);
     }
 
-    function handleDecrement() {
+    function handleDecrement(quantity) {
         if (quantity > 1) {
             setQuantity(quantity - 1);
         }
@@ -29,5 +30,14 @@ function ItemCard({ id, title, image, inCart, handleAdd, currentQuantity}) {
         </div>
     );
 }
+
+ItemCard.propTypes = {
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+    inCart: PropTypes.bool.isRequired,
+    handleAdd: PropTypes.func.isRequired,
+    currentQuantity: PropTypes.number.isRequired,
+};
 
 export default ItemCard;

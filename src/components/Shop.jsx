@@ -38,27 +38,28 @@ function Shop () {
         return <Loading/>;
       }
 
-    return (<div className="shop">
-                <div className="shop-title">
-                    <h1>Shop</h1>
-                </div>
-                <div className="card-grid">
-                        {
-                        items.map(item => 
-                        <ItemCard 
-                            key={item.id}
-                            id={item.id} 
-                            title={item.title}
-                            image={item.image}
-                            inCart={item.inCart}
-                            handleAdd={handleAdd}
-                            currentQuantity={item.quantity}
-                            >
-                        </ItemCard>)
-                    }
-                </div>
+    return (
+    <div className="shop">
+        <div className="shop-title">
+            <h1>Shop</h1>
         </div>
-    )
+        <div className="card-grid">
+                {
+                items.map(item => 
+                <ItemCard 
+                    key={item.id}
+                    id={item.id} 
+                    title={item.title}
+                    image={item.image}
+                    inCart={item.inCart}
+                    handleAdd={handleAdd}
+                    currentQuantity={item.quantity}
+                    >
+                </ItemCard>)
+            }
+        </div>
+    </div>
+    );
 }
 
 export default Shop;
