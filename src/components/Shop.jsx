@@ -7,7 +7,6 @@ import { useOutletContext } from "react-router-dom";
 
 function Shop () {
     const [loading, setLoading] = useState(true);
-
     const { setItems, items, handleAdd } = useOutletContext();
 
     useEffect(() => {
@@ -48,10 +47,7 @@ function Shop () {
                 items.map(item => 
                 <ItemCard 
                     key={item.id}
-                    id={item.id} 
-                    title={item.title}
-                    image={item.image}
-                    inCart={item.inCart}
+                    item={item}
                     handleAdd={handleAdd}
                     currentQuantity={item.quantity}
                     >

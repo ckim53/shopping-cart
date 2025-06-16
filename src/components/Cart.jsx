@@ -1,6 +1,10 @@
 import { useOutletContext } from "react-router-dom";
+import { useState } from "react"
+import QuantityButtons from "./QuantityButtons";
 
 function Cart () {
+    const [edit, setEdit] = useState(false);
+
     const { setItems, items, setQuantity, quantity } = useOutletContext();
 
     function handleRemove(itemId, itemQuantity) {
@@ -9,6 +13,23 @@ function Cart () {
             {...item, quantity: 0, inCart: false} : item
         }));
         setQuantity(quantity - itemQuantity);
+    }
+
+    function handleQuantityChange (itemId, itemQuantity) {
+        const updatedItems = items.map(item => {
+            if (item.id === itemId) {
+              const quantityDiff = itemQuantity - item.quantity;
+              setQuantity(prev => prev + quantityDiff);
+              return { ...item, quantity: itemQuantity };
+            }
+            return item;
+          });
+      
+          setItems(updatedItems);
+    }
+
+    function handleEdit() {
+        setEdit(true);
     }
 
     return (
@@ -21,7 +42,11 @@ function Cart () {
                 <img src={item.image} alt={item.title} />
                 <div className="cart-item-info">
                     <h3>{item.title}</h3>
-                    <p>Quantity: {item.quantity}</p>
+                    <QuantityButtons
+                        quantity={item.quantity}
+                        handleIncrement={() => handleQuantityChange(item.id, item.quantity + 1)}
+                        handleDecrement={() => handleQuantityChange(item.id, item.quantity - 1)}
+                    />
                     <div>
                     <button className="remove-cart-item" onClick={() => handleRemove(item.id, item.quantity)}>Remove</button>
                     </div>
